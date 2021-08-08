@@ -1,4 +1,4 @@
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyDopg-dxSnWs4OkQIYQktj2eQI7RoXIttc",
   authDomain: "clone-a8b68.firebaseapp.com",
   projectId: "clone-a8b68",
@@ -8,3 +8,5 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore();
