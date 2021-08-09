@@ -18,7 +18,14 @@ function getItems() {
 }
 
 function addToCart(item) {
-  console.log(item);
+  db.collection("cart-item").doc(item.id).set({
+    image: item.image,
+    name: item.name,
+    make: item.make,
+    rating: item.rating,
+    price: item.price,
+    quantity: 1,
+  });
 }
 
 function generateItems(items) {
