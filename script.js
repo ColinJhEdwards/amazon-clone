@@ -18,13 +18,22 @@ function getItems() {
 }
 
 function addToCart(item) {
-  db.collection("cart-item").doc(item.id).set({
-    image: item.image,
-    name: item.name,
-    make: item.make,
-    rating: item.rating,
-    price: item.price,
-    quantity: 1,
+  let cartItem = db.collection("cart-item").doc(item.id);
+  cartItem.get().then(function (doc) {
+    if (doc.exists) {
+      cartItem.update({
+        quantity: doc.data().quantity + 1,
+      });
+    } else {
+      cartItem.set({
+        image: item.image,
+        name: item.name,
+        make: item.make,
+        rating: item.rating,
+        price: item.price,
+        quantity: 1,
+      });
+    }
   });
 }
 
